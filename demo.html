@@ -25,6 +25,9 @@
 <body>
   <div class="container">
     <H1>Tooltip Demo</H1>
+    <div>
+      <span>Delay</span><input id="delay" type="number" value="0"/><span>ms</span>
+    </div>
     <div class="test" data-placement="top"><p>Top</p></div>
     <div class="test" data-placement="bottom"><p>Bottom</p></div>
     <div class="test" data-placement="left"><p>Left</p></div>
@@ -41,7 +44,7 @@
         selector: $this,
         placement: $this.data('placement'),
         content: "test",
-        delay: 0
+        delay: $('#delay').val()
       };
       simple.Tooltip(opts);
     });
