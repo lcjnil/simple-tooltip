@@ -1,0 +1,172 @@
+@import "compass/css3";
+
+$zindex-tooltip: 1070 !default;
+$tooltip-max-width: 200px !default;
+$tooltip-color: #fff !default;
+$tooltip-bg: #000 !default;
+$tooltip-opacity: .9 !default;
+$tooltip-arrow-width: 5px !default;
+$tooltip-arrow-color: $tooltip-bg !default;
+$tooltip-min-width: 60px;
+$tooltip-font-size: 14px;
+
+$border-radius-base: 4px !default;
+$border-radius-large: 6px !default;
+$border-radius-small: 3px !default;
+
+.simple-tooltip {
+  position: absolute;
+  z-index: $zindex-tooltip;
+  display: block;
+  visibility: visible;
+  font-size: $tooltip-font-size;
+  line-height: 1.4;
+
+  &.placement-top {
+    margin-top: -3px;
+    padding: $tooltip-arrow-width 0;
+  }
+  &.placement-right {
+    margin-left: 3px;
+    padding: 0 $tooltip-arrow-width;
+  }
+  &.placement-bottom {
+    margin-top: 3px;
+    padding: $tooltip-arrow-width 0;
+  }
+  &.placement-left {
+    margin-left: -3px;
+    padding: 0 $tooltip-arrow-width;
+  }
+}
+
+//// Wrapper for the tooltip content
+
+.tooltip-content {
+
+  max-width: $tooltip-max-width;
+  padding: 3px 8px;
+  color: $tooltip-color;
+  text-decoration: none;
+  background-color: $tooltip-bg;
+  text-align: center;
+  border: 1px solid;
+  border-radius: 5px;
+  min-width: $tooltip-min-width;
+}
+
+// Arrows
+.tooltip-arrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+}
+
+.simple-tooltip {
+  &.placement-top .tooltip-arrow {
+    bottom: 0;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
+  }
+  &.placement-top-left .tooltip-arrow {
+    bottom: 0;
+    left: $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
+  }
+  &.placement-top-right .tooltip-arrow {
+    bottom: 0;
+    right: $tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-top-color: $tooltip-arrow-color;
+  }
+  &.placement-right .tooltip-arrow {
+    top: 50%;
+    left: 0;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width $tooltip-arrow-width $tooltip-arrow-width 0;
+    border-right-color: $tooltip-arrow-color;
+  }
+  &.placement-left .tooltip-arrow {
+    top: 50%;
+    right: 0;
+    margin-top: -$tooltip-arrow-width;
+    border-width: $tooltip-arrow-width 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-left-color: $tooltip-arrow-color;
+  }
+  &.placement-bottom .tooltip-arrow {
+    top: 0;
+    left: 50%;
+    margin-left: -$tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
+  }
+  &.placement-bottom-left .tooltip-arrow {
+    top: 0;
+    left: $tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
+  }
+  &.placement-bottom-right .tooltip-arrow {
+    top: 0;
+    right: $tooltip-arrow-width;
+    border-width: 0 $tooltip-arrow-width $tooltip-arrow-width;
+    border-bottom-color: $tooltip-arrow-color;
+  }
+}
+
+//Animation
+@keyframes moveIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@-webkit-keyframes moveIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes moveOut {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes moveOut {
+  0% {
+    opacity: 100%;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.tooltip-in {
+  @include animation-name(moveIn);
+  @include animation-duration(1.5s);
+  @include animation-fill-mode(forwards);
+  @include animation-timing-function(cubic-bezier(0.03, 0.71, 0.48, 1));
+}
+
+.tooltip-out {
+  @include animation-name(moveIn);
+  @include animation-duration(1.5s);
+  @include animation-fill-mode(forwards);
+  @include animation-timing-function(cubic-bezier(0.03, 0.71, 0.48, 1));
+}

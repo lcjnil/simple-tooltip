@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Tooltip Demo!</title>
+  <link rel="stylesheet" href="css/tooltip.css"/>
+  <style>
+    body {
+      margin-top: 20px;
+    }
+    .container {
+      width: 768px;
+      margin: 0 auto;
+    }
+    .test {
+      width: 100px;
+      height: 50px;
+      margin: 20px;
+      background: pink;
+      text-align: center;
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <H1>Tooltip Demo</H1>
+    <div class="test" data-placement="top"><p>Top</p></div>
+    <div class="test" data-placement="bottom"><p>Bottom</p></div>
+    <div class="test" data-placement="left"><p>Left</p></div>
+    <div class="test" data-placement="right"><p>Right</p></div>
+  </div>
+
+  <script type="text/javascript" src="vendor/bower/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="vendor/bower/simple-module/lib/module.js"></script>
+  <script src="lib/tooltip.js"></script>
+  <script>
+    $('.test').on('mouseenter', function(){
+      var $this = $(this);
+      var opts = {
+        selector: $this,
+        placement: $this.data('placement'),
+        content: "test"
+      };
+      simple.Tooltip(opts);
+    });
+  </script>
+</body>
+</html>
