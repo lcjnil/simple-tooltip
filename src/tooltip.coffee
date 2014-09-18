@@ -4,7 +4,7 @@ class Tooltip extends Widget
     content: ""
     cls: null
     selector: null
-    delay: 1000
+    delay: null
 
   @_placements: [
     "bottom"
@@ -47,7 +47,7 @@ class Tooltip extends Widget
 
     @selector.on "mouseleave.simple-tooltip", (e) =>
       delay = =>
-        @el.fadeOut 1000
+        @destroy()
 
       setTimeout delay, @opts.delay
 
